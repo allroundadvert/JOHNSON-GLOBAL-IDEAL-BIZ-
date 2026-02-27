@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOHNSON GLOBAL IDEAL BIZ</title>
+
+<style>
+:root{
+  --gold:#d4af37;
+  --dark:#020617;
+}
+body{
+  margin:0;
+  font-family:Segoe UI, Arial, sans-serif;
+  background:linear-gradient(180deg,#020617,#000);
+  color:#e5e7eb;
+}
+
+/* ===== TOP SLIDER ===== */
+.hero{
+  width:100%;
+  height:30vh;
+  background:#000;
+  overflow:hidden;
+}
+.slides{
+  display:flex;
+  width:200%;
+  height:100%;
+  animation:slide 10s infinite;
+}
+.slides img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+@keyframes slide{
+  0%,45%{transform:translateX(0);}
+  50%,95%{transform:translateX(-50%);}
+  100%{transform:translateX(0);}
+}
+
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:28px 16px;
+  background:#000;
+  border-bottom:2px solid var(--gold);
+}
+header h1{
+  margin:0;
+  color:var(--gold);
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+header p{
+  margin-top:6px;
+  color:#9ca3af;
+  font-size:15px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:24px;
+}
+
+/* ===== INFO BOX ===== */
+.info{
+  border:1px solid rgba(212,175,55,.35);
+  padding:26px;
+  margin-bottom:40px;
+  background:rgba(0,0,0,.4);
+}
+.info h2{
+  color:var(--gold);
+  margin-top:0;
+}
+.info p{
+  line-height:1.7;
+  color:#d1d5db;
+}
+
+/* ===== IMAGE GALLERY ===== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-bottom:40px;
+}
+.gallery img{
+  width:100%;
+  height:200px;
+  object-fit:contain;
+  background:#000;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+/* ===== FORM ===== */
+form{
+  border:1px solid rgba(212,175,55,.3);
+  padding:28px;
+  background:rgba(0,0,0,.4);
+}
+label{
+  display:block;
+  margin-top:14px;
+  font-weight:600;
+}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  background:#020617;
+  border:1px solid #1f2937;
+  color:#fff;
+}
+button{
+  margin-top:26px;
+  width:100%;
+  padding:16px;
+  background:linear-gradient(90deg,#d4af37,#ffd966);
+  border:none;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ===== FLOATING BUTTONS ===== */
+.whatsapp-btn,.call-btn{
+  position:fixed;
+  right:18px;
+  padding:14px 18px;
+  border-radius:40px;
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  z-index:999;
+}
+.whatsapp-btn{bottom:90px;background:#22c55e;}
+.call-btn{bottom:28px;background:#2563eb;}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:#000;
+  color:#9ca3af;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP MOVING IMAGES -->
+<div class="hero">
+  <div class="slides">
+    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185816.jpg">
+    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185849.jpg">
+  </div>
+</div>
+
+<header>
+<h1>JOHNSON GLOBAL IDEAL BIZ</h1>
+<p>High-Quality • Trusted Phone Accessories & Gadgets</p>
+</header>
+
+<div class="container">
+
+<!-- BUSINESS INFO -->
+<div class="info">
+<h2>About Us</h2>
+<p>
+JOHNSON GLOBAL IDEAL BIZ is your trusted destination for high-quality phone accessories and modern gadgets.
+We supply durable, original, and affordable products you can rely on.
+</p>
+
+<p>
+<strong>Address:</strong><br>
+No. 2 Siloko Road, Off Mobil Filling Station,<br>
+Benin City, Edo State.
+</p>
+</div>
+
+<!-- STATIC IMAGES -->
+<div class="gallery">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190659.jpg">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190813.jpg">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190909.jpg">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-191141.jpg">
+</div>
+
+<!-- CONTACT FORM -->
+<form onsubmit="sendToWhatsApp();return false;">
+<label>What are you interested in?</label>
+<select id="interest">
+<option>Phone Accessories</option>
+<option>Gadgets</option>
+<option>Wholesale Purchase</option>
+</select>
+
+<label>Product Name</label>
+<input id="product">
+
+<label>Specifications / Details</label>
+<textarea id="specs"></textarea>
+
+<label>Your Name</label>
+<input id="name">
+
+<label>Your Phone Number</label>
+<input id="phone">
+
+<button>CONTACT US ON WHATSAPP</button>
+</form>
+
+</div>
+
+<footer>© 2026 JOHNSON GLOBAL IDEAL BIZ</footer>
+
+<!-- FLOATING BUTTONS -->
+<a class="whatsapp-btn" href="#" onclick="openQuickWhatsApp()">WhatsApp</a>
+<a class="call-btn" href="tel:09027319208">Call</a>
+
+<script>
+function getGreeting(){
+  const h=new Date().getHours();
+  if(h<12) return "Good morning";
+  if(h<18) return "Good afternoon";
+  return "Good evening";
+}
+
+function openQuickWhatsApp(){
+  const msg =
+    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
+    "I saw your services on your website and I would like to get assistance.%0A%0A"+
+    "Thank you.";
+  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+}
+
+function sendToWhatsApp(){
+  const msg =
+    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
+    "I saw your services on your website and I would like to get assistance.%0A%0A"+
+    "Interest: "+interest.value+"%0A"+
+    "Product: "+product.value+"%0A"+
+    "Details: "+specs.value+"%0A%0A"+
+    "Name: "+name.value+"%0A"+
+    "Phone: "+phone.value;
+  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+}
+</script>
+
+</body>
+</html>
