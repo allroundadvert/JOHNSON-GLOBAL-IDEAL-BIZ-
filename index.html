@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>JOHNSON GLOBAL IDEAL BIZ</title>
 
 <style>
-:root{
-  --gold:#d4af37;
-}
+:root{--gold:#d4af37;}
+
 body{
   margin:0;
   font-family:Segoe UI, Arial, sans-serif;
@@ -25,18 +24,19 @@ body{
 }
 .slides{
   display:flex;
-  width:200%;
+  width:200vw;
   height:100%;
   animation:slide 10s infinite;
 }
 .slides img{
-  width:100%;
+  width:100vw;
   height:100%;
   object-fit:cover;
+  flex-shrink:0;
 }
 @keyframes slide{
   0%,45%{transform:translateX(0);}
-  50%,95%{transform:translateX(-50%);}
+  50%,95%{transform:translateX(-100vw);}
   100%{transform:translateX(0);}
 }
 
@@ -53,10 +53,7 @@ header h1{
   font-size:32px;
   font-weight:900;
 }
-header p{
-  margin-top:6px;
-  color:#9ca3af;
-}
+header p{margin-top:6px;color:#9ca3af;}
 
 /* CONTAINER */
 .container{
@@ -142,8 +139,10 @@ footer{
 
 <div class="hero">
   <div class="slides">
-    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185816.jpg">
-    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185849.jpg">
+    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185816.jpg"
+         loading="eager" referrerpolicy="no-referrer" crossorigin="anonymous">
+    <img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-185849.jpg"
+         loading="eager" referrerpolicy="no-referrer" crossorigin="anonymous">
   </div>
 </div>
 
@@ -161,10 +160,10 @@ Benin City, Edo State.
 </div>
 
 <div class="gallery">
-<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190659.jpg">
-<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190813.jpg">
-<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190909.jpg">
-<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-191141.jpg">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190659.jpg" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190813.jpg" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-190909.jpg" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
+<img src="https://raw.githubusercontent.com/allroundadvert/FESTO-TELECOM-ENTERPRISES/6dd9f71dd32149938f2765750bdfeeee48c61626/Screenshot_20260225-191141.jpg" loading="lazy" referrerpolicy="no-referrer" crossorigin="anonymous">
 </div>
 
 <form onsubmit="sendToWhatsApp();return false;">
@@ -182,29 +181,17 @@ Benin City, Edo State.
 
 <label>Quantity</label>
 <select id="quantity">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5+</option>
+  <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
 </select>
 
 <label>Screen Patch / Replacement</label>
-<select id="screen">
-  <option>No</option>
-  <option>Yes</option>
-</select>
+<select id="screen"><option>No</option><option>Yes</option></select>
 
 <label>Phone Model</label>
-<input id="model" placeholder="e.g iPhone 11, Samsung A14">
+<input id="model">
 
 <label>Patch Color</label>
-<select id="patchcolor">
-  <option>Black</option>
-  <option>White</option>
-  <option>Gold</option>
-  <option>Other</option>
-</select>
+<select id="patchcolor"><option>Black</option><option>White</option><option>Gold</option><option>Other</option></select>
 
 <label>Your Name</label>
 <input id="name">
@@ -225,30 +212,21 @@ Benin City, Edo State.
 <script>
 function getGreeting(){
   const h=new Date().getHours();
-  if(h<12) return "Good morning";
-  if(h<18) return "Good afternoon";
-  return "Good evening";
+  return h<12?"Good morning":h<18?"Good afternoon":"Good evening";
 }
-
 function openQuickWhatsApp(){
-  const msg =
-    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
-    "I saw your services on your website and I would like to get assistance.";
-  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+  window.open("https://wa.me/2349027319208?text="+
+  getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0AI saw your services and need assistance.","_blank");
 }
-
 function sendToWhatsApp(){
-  const msg =
-    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
-    "I saw your services on your website and I would like to get assistance.%0A%0A"+
-    "Accessory: "+accessories.value+"%0A"+
-    "Quantity: "+quantity.value+"%0A"+
-    "Screen Patch: "+screen.value+"%0A"+
-    "Phone Model: "+model.value+"%0A"+
-    "Patch Color: "+patchcolor.value+"%0A%0A"+
-    "Name: "+name.value+"%0A"+
-    "Phone: "+phone.value;
-  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+  window.open("https://wa.me/2349027319208?text="+
+  getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0AAccessory: "+accessories.value+
+  "%0AQuantity: "+quantity.value+
+  "%0AScreen Patch: "+screen.value+
+  "%0APhone Model: "+model.value+
+  "%0APatch Color: "+patchcolor.value+
+  "%0AName: "+name.value+
+  "%0APhone: "+phone.value,"_blank");
 }
 </script>
 
