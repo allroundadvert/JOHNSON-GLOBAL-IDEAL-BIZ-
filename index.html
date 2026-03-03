@@ -97,7 +97,7 @@ label{
   margin-top:14px;
   font-weight:600;
 }
-input,select,textarea{
+input,select{
   width:100%;
   padding:12px;
   margin-top:6px;
@@ -170,7 +170,7 @@ Benin City, Edo State.
 </div>
 
 <!-- ORDER FORM -->
-<form onsubmit="sendToWhatsApp();return false;">
+<form onsubmit="sendToWhatsApp(); return false;">
 
 <label>Phone Accessories</label>
 <select id="accessories">
@@ -210,7 +210,7 @@ Benin City, Edo State.
 </select>
 
 <label>Your Name</label>
-<input id="name">
+<input id="customerName">
 
 <label>Your Phone Number</label>
 <input id="phone">
@@ -227,30 +227,39 @@ Benin City, Edo State.
 
 <script>
 function getGreeting(){
-  const h=new Date().getHours();
-  if(h<12) return "Good morning";
-  if(h<18) return "Good afternoon";
+  const h = new Date().getHours();
+  if(h < 12) return "Good morning";
+  if(h < 18) return "Good afternoon";
   return "Good evening";
 }
 
 function openQuickWhatsApp(){
   const msg =
-    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
+    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ\n\n"+
     "I saw your services on your website and I would like to get assistance.";
-  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+  window.open("https://wa.me/2349027319208?text="+encodeURIComponent(msg),"_blank");
 }
 
 function sendToWhatsApp(){
+  const accessories  = document.getElementById("accessories").value;
+  const quantity     = document.getElementById("quantity").value;
+  const screenPatch  = document.getElementById("screen").value;
+  const phoneModel   = document.getElementById("model").value;
+  const patchColor   = document.getElementById("patchcolor").value;
+  const customerName = document.getElementById("customerName").value;
+  const phoneNumber  = document.getElementById("phone").value;
+
   const msg =
-    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ,%0A%0A"+
-    "Accessory: "+accessories.value+"%0A"+
-    "Quantity: "+quantity.value+"%0A"+
-    "Screen Patch: "+screen.value+"%0A"+
-    "Phone Model: "+model.value+"%0A"+
-    "Patch Color: "+patchcolor.value+"%0A%0A"+
-    "Name: "+name.value+"%0A"+
-    "Phone: "+phone.value;
-  window.open("https://wa.me/2349027319208?text="+msg,"_blank");
+    getGreeting()+" JOHNSON GLOBAL IDEAL BIZ\n\n"+
+    "Accessory: "+accessories+"\n"+
+    "Quantity: "+quantity+"\n"+
+    "Screen Patch: "+screenPatch+"\n"+
+    "Phone Model: "+phoneModel+"\n"+
+    "Patch Color: "+patchColor+"\n\n"+
+    "Name: "+customerName+"\n"+
+    "Phone: "+phoneNumber;
+
+  window.open("https://wa.me/2349027319208?text="+encodeURIComponent(msg),"_blank");
 }
 </script>
 
