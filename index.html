@@ -97,13 +97,17 @@ label{
   margin-top:14px;
   font-weight:600;
 }
-input,select{
+input,select,textarea{
   width:100%;
   padding:12px;
   margin-top:6px;
   background:#020617;
   border:1px solid #1f2937;
   color:#fff;
+}
+textarea{
+  min-height:90px;
+  resize:vertical;
 }
 button{
   margin-top:26px;
@@ -209,11 +213,19 @@ Benin City, Edo State.
   <option>Other</option>
 </select>
 
+<!-- ✅ NEW FIELD -->
+<label>Specifications</label>
+<textarea id="specifications" placeholder="Any extra details, brand preference, condition, etc"></textarea>
+
 <label>Your Name</label>
 <input id="customerName">
 
 <label>Your Phone Number</label>
 <input id="phone">
+
+<!-- ✅ NEW FIELD -->
+<label>Your Location</label>
+<input id="location" placeholder="City / Area / State">
 
 <button>SEND TO WHATSAPP</button>
 </form>
@@ -241,13 +253,15 @@ function openQuickWhatsApp(){
 }
 
 function sendToWhatsApp(){
-  const accessories  = document.getElementById("accessories").value;
-  const quantity     = document.getElementById("quantity").value;
-  const screenPatch  = document.getElementById("screen").value;
-  const phoneModel   = document.getElementById("model").value;
-  const patchColor   = document.getElementById("patchcolor").value;
-  const customerName = document.getElementById("customerName").value;
-  const phoneNumber  = document.getElementById("phone").value;
+  const accessories     = document.getElementById("accessories").value;
+  const quantity        = document.getElementById("quantity").value;
+  const screenPatch     = document.getElementById("screen").value;
+  const phoneModel      = document.getElementById("model").value;
+  const patchColor      = document.getElementById("patchcolor").value;
+  const specifications = document.getElementById("specifications").value;
+  const customerName    = document.getElementById("customerName").value;
+  const phoneNumber     = document.getElementById("phone").value;
+  const location        = document.getElementById("location").value;
 
   const msg =
     getGreeting()+" JOHNSON GLOBAL IDEAL BIZ\n\n"+
@@ -255,9 +269,11 @@ function sendToWhatsApp(){
     "Quantity: "+quantity+"\n"+
     "Screen Patch: "+screenPatch+"\n"+
     "Phone Model: "+phoneModel+"\n"+
-    "Patch Color: "+patchColor+"\n\n"+
+    "Patch Color: "+patchColor+"\n"+
+    "Specifications: "+specifications+"\n\n"+
     "Name: "+customerName+"\n"+
-    "Phone: "+phoneNumber;
+    "Phone: "+phoneNumber+"\n"+
+    "Location: "+location;
 
   window.open("https://wa.me/2349027319208?text="+encodeURIComponent(msg),"_blank");
 }
